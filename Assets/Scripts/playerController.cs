@@ -5,23 +5,64 @@ using UnityEngine;
 public class playerController : MonoBehaviour {
 
     public float ballSpeed;
+    public int jumpPower;
     private Rigidbody body;
-    
-
-   
+    private int jump;
+    private bool InAir = false;
+        
     // Use this for initialization
-    void Start () {
-        body = GetComponent<Rigidbody>();
+    void Start ()
+    {
+        body = GetComponent<Rigidbody>();        
     }
 
-    // Update is called once per frame
+    //Grounded -> Jump possible? 
+    
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Untagged" && InAir == true)
+        {
+            InAir = false;
+        }
+    }
+
+    void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.tag == "Untagged" && InAir == true)
+        {
+            InAir = false;
+        }
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        InAir = true;
+    }
+
+
+    //Move it
+
     void FixedUpdate()
     {
         float xSpeed = Input.GetAxis("Horizontal");
         float ySpeed = Input.GetAxis("Vertical");
-             
         
-        body.AddForce (new Vector3(xSpeed, 0, ySpeed) * ballSpeed * Time.deltaTime);
+        
+
+
+        if (Input.GetButtonDown("Jump") && InAir==false)
+        {
+            jump = jumpPower;            
+        }
+
+        else
+        {
+            jump = 0;
+        }
+
+        Vector3 movement = new Vector3(xSpeed, jump, ySpeed);
+        
+        body.AddForce (movement * ballSpeed * Time.deltaTime);
     } 
 	
 }
