@@ -6,17 +6,22 @@ public class playerController : MonoBehaviour {
 
     public float ballSpeed;
     public int jumpPower;
+    public Transform Kamara;
+    public GameObject PlayerContainer;
+
     private Rigidbody body;
     private int jump;
     private bool InAir = false;
-        
+    
+
     // Use this for initialization
     void Start ()
     {
-        body = GetComponent<Rigidbody>();        
+        body = GetComponent<Rigidbody>();    
+               
     }
 
-    //Grounded -> Jump possible? 
+    //"Grounded" -> Jump possible? 
     
     void OnCollisionEnter(Collision other)
     {
@@ -46,9 +51,6 @@ public class playerController : MonoBehaviour {
     {
         float xSpeed = Input.GetAxis("Horizontal");
         float ySpeed = Input.GetAxis("Vertical");
-        
-        
-
 
         if (Input.GetButtonDown("Jump") && InAir==false)
         {
@@ -60,9 +62,18 @@ public class playerController : MonoBehaviour {
             jump = 0;
         }
 
-        Vector3 movement = new Vector3(xSpeed, jump, ySpeed);
         
-        body.AddForce (movement * ballSpeed * Time.deltaTime);
+        Vector3 cam = new Vector3(0, Kamara.transform.eulerAngles.y, 0);
+        
+        Quaternion rot = Quaternion.Euler(cam);              
+
+        Vector3 movement = new Vector3(xSpeed, jump, ySpeed);
+
+        Vector3 rotatedMove = rot * movement;
+        
+
+        body.AddForce (rotatedMove * ballSpeed * Time.deltaTime);
+        
     } 
 	
 }

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 49d01e73f8e7e104fafc570dee8b1e00
-timeCreated: 1516319584
+guid: 5e09fc7f6d0b01645be40abd7842c8b2
+timeCreated: 1516328181
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: ground
+    4300000: stonewall
     9500000: //RootNode
   externalObjects:
   - first:
