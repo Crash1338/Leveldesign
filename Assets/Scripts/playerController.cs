@@ -6,13 +6,12 @@ public class playerController : MonoBehaviour {
 
     public float ballSpeed;
     public int jumpPower;
-    public Transform Kamara;
-    public GameObject PlayerContainer;
+    public Transform Kamara;    
 
     private Rigidbody body;
     private int jump;
     private bool InAir = false;
-    
+  
 
     // Use this for initialization
     void Start ()
@@ -25,7 +24,7 @@ public class playerController : MonoBehaviour {
     
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Untagged" && InAir == true)
+        if (InAir == true && other.gameObject.layer == 8)
         {
             InAir = false;
         }
@@ -33,7 +32,7 @@ public class playerController : MonoBehaviour {
 
     void OnCollisionStay(Collision other)
     {
-        if (other.gameObject.tag == "Untagged" && InAir == true)
+        if (InAir == true && other.gameObject.layer == 8)
         {
             InAir = false;
         }
@@ -44,6 +43,7 @@ public class playerController : MonoBehaviour {
         InAir = true;
     }
 
+    
 
     //Move it
 
@@ -54,7 +54,9 @@ public class playerController : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump") && InAir==false)
         {
-            jump = jumpPower;            
+            //InAir = true; 
+            jump = jumpPower;
+                      
         }
 
         else

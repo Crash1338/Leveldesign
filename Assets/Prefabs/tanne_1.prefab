@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 4974406061195966}
   - component: {fileID: 23552095604588874}
   - component: {fileID: 64331476149483854}
+  - component: {fileID: 136587445600642546}
   m_Layer: 0
   m_Name: tanne_1
   m_TagString: Untagged
@@ -580,8 +581,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1216913682890698}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.021899046, y: 3.623731, z: 0.020286866}
-  m_LocalScale: {x: 0.7224411, y: 0.7224411, z: 0.7224411}
+  m_LocalPosition: {x: 0.021899046, y: 3.554, z: 0.020287}
+  m_LocalScale: {x: 0.7904532, y: 0.79045326, z: 0.79045326}
   m_Children: []
   m_Father: {fileID: 4974406061195966}
   m_RootOrder: 1
@@ -1322,9 +1323,22 @@ MeshCollider:
   m_GameObject: {fileID: 1806879434461346}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 0
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7015e9e90b5a7334684a65972258690f, type: 3}
+--- !u!136 &136587445600642546
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806879434461346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.37956306
+  m_Height: 6.060688
+  m_Direction: 1
+  m_Center: {x: 0.011779845, y: -2.530344, z: 0.028572053}
