@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerController : MonoBehaviour {
 
     public float ballSpeed;
+    public float airControl;
     public int jumpPower;
     public Transform Kamara;    
 
@@ -53,23 +54,25 @@ public class playerController : MonoBehaviour {
         float ySpeed = Input.GetAxis("Vertical");
 
         if (Input.GetButtonDown("Jump") && InAir==false)
-        {
-            //InAir = true; 
-            jump = jumpPower;
-                      
+        {             
+            jump = jumpPower;                      
         }
 
         else
         {
             jump = 0;
         }
-
-        
+                       
         Vector3 cam = new Vector3(0, Kamara.transform.eulerAngles.y, 0);
         
         Quaternion rot = Quaternion.Euler(cam);              
 
         Vector3 movement = new Vector3(xSpeed, jump, ySpeed);
+
+        if (InAir == true)
+        {
+            movement = movement * airControl;
+        }
 
         Vector3 rotatedMove = rot * movement;
         
